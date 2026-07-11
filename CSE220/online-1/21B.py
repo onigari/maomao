@@ -35,20 +35,45 @@ def init_signal():
 
 
 def time_scale_signal(x: np.ndarray, k: int) -> np.ndarray:
+    # Returns y[n] = x[n/k]. Only defined (nonzero) where n is a multiple of k;
+    # all intermediate samples are set to 0.
+    n = np.arange(-INF, INF + 1)
     y = np.zeros_like(x)
 
-    n = np.arange(-INF, INF+1)
-    m = n/k
-    valid = (m >= -INF) & (m <= INF)
+    mask = (n % k == 0)               # n values that are exact multiples of k
+    m = (n[mask] // k).astype(int)    # corresponding original index m = n/k
+    valid = (m >= -INF) & (m <= INF)  # keep only m within the stored range
 
-    y[valid] = x[m[valid] + INF]
+    idx_n = n[mask][valid] + INF      # array positions for those n
+    idx_m = m[valid] + INF            # array positions for those m
 
+    y[idx_n] = x[idx_m]
     return y
 
 
 def time_scale_signal_interpolate(x: np.ndarray, k: int) -> np.ndarray:
-    # implement this function
-    None
+    # Same as time_scale_signal, but intermediate samples are filled with the
+    # average of the two flanking exact samples (the ones at the nearest
+    # multiples of k below and above), instead of 0. A neighbor that falls
+    # outside the stored [-INF, INF] range is treated as 0.
+    n = np.arange(-INF, INF + 1)
+    y = time_scale_signal(x, k)
+
+    lower_n = (np.floor(n / k) * k).astype(int)
+    upper_n = lower_n + k
+
+    def gather(idx):
+        out = np.zeros_like(x)
+        valid = (idx >= -INF) & (idx <= INF)
+        out[valid] = y[idx[valid] + INF]
+        return out
+
+    lower_val = gather(lower_n)
+    upper_val = gather(upper_n)
+    interpolated = (lower_val + upper_val) / 2
+
+    exact_mask = (n % k == 0)
+    return np.where(exact_mask, y, interpolated)
 
 
 def main():
