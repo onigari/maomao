@@ -1,0 +1,216 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath, amssymb, amsthm}
+\usepackage{graphicx}
+\usepackage{subcaption}
+\usepackage{enumitem}
+\usepackage{xcolor}
+\usepackage{colortbl}
+\usepackage{hyperref}
+
+\newtheorem{proposition}{Proposition}[section]
+
+\title{THE SOLAR SYSTEM}
+\author{Johannes Kepler\footnote{Imperial Mathematician, Prague}}
+\date{}
+
+\begin{document}
+
+\maketitle
+\tableofcontents
+\newpage
+
+\section{Our Planetary Neighborhood}
+\subsection{The Sun and Its Planets}
+The Sun and its gravity-bound bodies form the Solar System \cite{kepler}. See \href{https://science.nasa.gov/solar-system/}{NASA Solar System Exploration}. In increasing distance, the planets are
+Mercury, Venus, Earth, Mars, Jupiter, Saturn, Uranus, Neptune.
+
+The planets form two groups:
+\begin{enumerate}[label=(\Roman*)]
+    \item Inner planets
+    \begin{itemize}[label=$\dagger$]
+        \item Mercury, Venus, Earth, and Mars belong to this group.
+        \item They are comparatively small and have solid surfaces.
+        \item They are also called the terrestrial planets.
+    \end{itemize}
+    \item Outer planets
+    \begin{itemize}[label=$\dagger$]
+        \item Jupiter and Saturn are gas giants.
+        \item Uranus and Neptune are commonly called ice giants.
+        \item All four outer planets possess ring systems.
+    \end{itemize}
+\end{enumerate}
+The inner planets are small, dense, and relatively close to the Sun, whereas the outer planets are much larger and travel along considerably wider orbits.
+
+\subsection{Portraits of the Solar System}
+Figure \ref{fig:solarsystem} shows the Sun and eight planets.\footnote{Sizes and distances are schematic.} Compare Mars in Figure \ref{fig:mars} with Jupiter in Figure \ref{fig:jupiter}.
+
+\section{Kepler's Laws of Planetary Motion}
+Kepler's three laws describe planetary motion \cite{nasa_orbits}.
+
+\subsection{First Law: Elliptical Orbits}
+A planetary orbit is elliptical, with the Sun at one focus:
+\begin{equation}
+\frac{x^{2}}{a^{2}}+\frac{y^{2}}{b^{2}}=1, \quad a\ge b>0
+\end{equation}
+Here $a$ and $b$ are the semi-axes. 
+
+\begin{figure}[htbp]
+    \centering
+    \textbf{\Large Star}\par\medskip
+    \begin{subfigure}{0.3\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{sun.png}
+        \caption{The Sun}
+    \end{subfigure}
+    
+    \vspace{1cm}
+    \textbf{\Large Inner Planets}\par\medskip
+    \begin{subfigure}{0.2\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{mercury.png}
+        \caption{Mercury}
+    \end{subfigure}\hfill
+    \begin{subfigure}{0.2\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{venus.png}
+        \caption{Venus}
+    \end{subfigure}\hfill
+    \begin{subfigure}{0.2\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{earth.png}
+        \caption{Earth}
+    \end{subfigure}\hfill
+    \begin{subfigure}{0.2\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{mars.png}
+        \caption{Mars}
+        \label{fig:mars}
+    \end{subfigure}
+    
+    \vspace{1cm}
+    \textbf{\Large Outer Planets}\par\medskip
+    \begin{subfigure}{0.2\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{jupiter.png}
+        \caption{Jupiter}
+        \label{fig:jupiter}
+    \end{subfigure}\hfill
+    \begin{subfigure}{0.2\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{saturn.png}
+        \caption{Saturn}
+    \end{subfigure}\hfill
+    \begin{subfigure}{0.2\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{uranus.png}
+        \caption{Uranus}
+    \end{subfigure}\hfill
+    \begin{subfigure}{0.2\textwidth}
+        \centering
+        \includegraphics[width=\linewidth]{neptune.png}
+        \caption{Neptune}
+    \end{subfigure}
+    
+    \caption{The Sun and the eight planets of the Solar System, arranged into the inner and outer planetary groups. The displayed sizes and distances are not to scale.}
+    \label{fig:solarsystem}
+\end{figure}
+
+For focal distance $c$,
+\begin{equation}
+c^{2}=a^{2}-b^{2}, \quad e=\frac{c}{a}
+\end{equation}
+Here $e$ is the eccentricity. In polar form,
+\begin{equation}
+r(\theta)=\frac{a(1-e^{2})}{1+e\cos\theta}.
+\end{equation}
+Equation (3) gives the orbital distance.
+
+\subsection{Second Law: Equal Areas in Equal Times}
+Equal times sweep equal areas:
+\begin{equation}
+\Delta t_1 = \Delta t_2 \implies \Delta A_1 = \Delta A_2.
+\end{equation}
+Consequently, a planet moves
+\begin{itemize}
+    \item faster when it is closer to the Sun, and
+    \item slower when it is farther from the Sun.
+\end{itemize}
+
+\subsection{Third Law: Orbital Period and Distance}
+For planets orbiting one star, $T^{2}\propto a^{3}$. Newtonian form:
+\begin{equation}
+T^{2}=\frac{4\pi^{2}}{GM_{\odot}}a^{3}
+\end{equation}
+Here $M_{\odot}$ is the solar mass.
+
+\subsection{An Earth-Mars Comparison}
+Using Earth as reference, $a_{E}=1\text{ AU}$, $T_{E}=1\text{ year}$, where $1\text{ AU}\approx1.496\times10^{11}\text{ m}$.\footnote{AU denotes the mean Earth-Sun distance.} For Mars, $a_{M}\approx1.524\text{ AU}$, so
+\begin{equation}
+\frac{T_{M}^{2}}{T_{E}^{2}}=\frac{a_{M}^{3}}{a_{E}^{3}}.
+\end{equation}
+Thus $T_{M}=T_{E}\left(\frac{a_{M}}{a_{E}}\right)^{3/2} \approx (1.524)^{3/2} \approx 1.88\text{ years}$.
+
+\section{A Relativistic Extension}
+General relativity extends Kepler's model.\footnote{Planetary corrections are small but measurable.} Einstein's equations are
+\begin{equation}
+G_{\mu\nu}+\Lambda g_{\mu\nu}=\frac{8\pi G}{c^{4}}T_{\mu\nu}
+\end{equation}
+For spherical mass $M$,
+\begin{equation}
+ds^{2}=-\left(1-\frac{r_{s}}{r}\right)c^{2}dt^{2}+\left(1-\frac{r_{s}}{r}\right)^{-1}dr^{2}+r^{2}(d\theta^{2}+\sin^{2}\theta d\phi^{2}), \quad r_{s}=\frac{2GM}{c^{2}}.
+\end{equation}
+Free fall satisfies
+\begin{equation}
+\frac{d^{2}x^{\mu}}{d\tau^{2}}+\Gamma_{\alpha\beta}^{\mu}\frac{dx^{\alpha}}{d\tau}\frac{dx^{\beta}}{d\tau}=0.
+\end{equation}
+Per orbit,
+\begin{equation}
+\Delta\varpi=\frac{6\pi GM}{a(1-e^{2})c^{2}}
+\end{equation}
+
+\begin{proposition}[Weak-field circular orbit]
+For a circular orbit of radius $r$,
+\begin{equation}
+\left(\frac{v}{c}\right)^{2}=\frac{GM}{rc^{2}}=\frac{r_{s}}{2r}.
+\end{equation}
+\end{proposition}
+\begin{proof}
+The circular-orbit balance $v^{2}/r=GM/r^{2}$ gives $v^{2}=GM/r$. Divide by $c^{2}$ and use $r_{s}=2GM/c^{2}$.
+\end{proof}
+See Proposition 3.1.
+
+\section{The Outer Planets}
+The outer planets are Jupiter, Saturn, Uranus, and Neptune \cite{nasa_planets}. The first two are gas giants; the last two are ice giants.
+
+Table \ref{tab:outer_planets} uses scientific and relativistic notation.\footnote{Values are rounded for typesetting practice.}
+
+\begin{table}[h!]
+\centering
+\caption{Orbital and relativistic parameters of the outer planets}
+\label{tab:outer_planets}
+\begin{tabular}{|l|c|c|c|c|}
+\hline
+\rowcolor{blue!15}
+\textbf{Planet} & \multicolumn{2}{c|}{\textbf{Orbital parameters}} & \multicolumn{2}{c|}{\textbf{Relativistic notation}} \\ \cline{2-5}
+\rowcolor{blue!5}
+ & $a$ (AU) & $e$ & $\epsilon=\frac{1}{ac^{2}}GM_{\odot}$ & $\beta=\sqrt{\epsilon}$ \\ \hline
+Jupiter & $5.204$ & $4.89\times10^{-2}$ & $1.90\times10^{-9}$ & $4.36\times10^{-5}$ \\ \hline
+Saturn & $9.583$ & $5.65\times10^{-2}$ & $1.03\times10^{-9}$ & $3.21\times10^{-5}$ \\ \hline
+Uranus & $19.191$ & $4.72\times10^{-2}$ & $5.14\times10^{-10}$ & $2.27\times10^{-5}$ \\ \hline
+Neptune & $30.070$ & $8.6\times10^{-3}$ & $3.28\times10^{-10}$ & $1.81\times10^{-5}$ \\ \hline
+\end{tabular}
+\end{table}
+
+Table \ref{tab:outer_planets} compares the four giant planets.
+
+\begin{thebibliography}{9}
+\bibitem{kepler}
+J. Kepler, \textit{Astronomia Nova}. Heidelberg, 1609.
+\bibitem{nasa_orbits}
+National Aeronautics and Space Administration, "Orbits and kepler's laws," 2024.
+\bibitem{nasa_planets}
+National Aeronautics and Space Administration, "About the planets," 2026. Solar System Exploration.
+\end{thebibliography}
+
+\end{document}
